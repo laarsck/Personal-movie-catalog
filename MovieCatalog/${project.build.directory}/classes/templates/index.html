@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинокаталог</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <h1>Кинокаталог</h1>
+        <p class="subtitle">Каталог персональных фильмов</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link active">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link">Рецензии</a>
+    </nav>
+
+    <!-- Сообщения -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Боковая панель с жанрами -->
+        <aside class="sidebar">
+            <div class="genres-panel">
+                <h3>Жанры
+                    <span class="badge" th:text="${allGenres != null ? allGenres.size() : 0}"></span>
+                </h3>
+
+                <!-- Кнопка "Все жанры" -->
+                <a th:href="@{/}"
+                   class="genre-link"
+                   th:classappend="${selectedGenre == null} ? 'active' : ''">
+                    Все жанры
+                </a>
+
+                <!-- Список жанров -->
+                <div class="genres-list" th:if="${allGenres != null and !allGenres.isEmpty()}">
+                    <a th:each="genre : ${allGenres}"
+                       th:href="@{/(genre=${#strings.replace(genre, ' ', '+')})}"
+                       class="genre-link"
+                       th:classappend="${selectedGenre == genre} ? 'active' : ''">
+                        <span th:text="${genre}"></span>
+                    </a>
+                </div>
+
+                <div class="genres-empty" th:if="${allGenres == null or allGenres.isEmpty()}">
+                    <p>Жанров пока нет</p>
+                    <p>Добавьте жанр при создании фильма</p>
+                </div>
+
+                <!-- Фильтр по жанру -->
+                <div th:if="${selectedGenre}" class="current-filter">
+                    <p>Сейчас выбрано: <strong th:text="${selectedGenre}"></strong></p>
+                    <a th:href="@{/}" class="btn btn-small btn-secondary">Сбросить фильтр</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- Статистика -->
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Всего фильмов</h3>
+                    <p class="stat-number" th:text="${movieCount}">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Просмотрено</h3>
+                    <p class="stat-number" th:text="${completedCount}">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>В процессе</h3>
+                    <p class="stat-number" th:text="${watchingCount}">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Запланировано</h3>
+                    <p class="stat-number" th:text="${plannedCount}">0</p>
+                </div>
+            </div>
+
+            <!-- Поиск и добавление -->
+            <div class="action-panel">
+                <div class="search-box">
+                    <form th:action="@{/}" method="get">
+                        <input type="text" name="query" placeholder="Поиск фильмов..."
+                               th:value="${searchQuery}">
+                        <button type="submit" class="btn btn-small">Найти</button>
+                        <a th:href="@{/}" class="btn btn-small btn-secondary">Сбросить</a>
+                    </form>
+                </div>
+                <a th:href="@{/movies/new}" class="btn btn-primary">Добавить фильм</a>
+            </div>
+
+            <!-- Список фильмов -->
+            <div class="movies-container">
+                <div class="info-bar">
+                    <p>Найдено фильмов: <strong th:text="${movieCount}">0</strong>
+                        <span th:if="${selectedGenre}"> в жанре "<strong th:text="${selectedGenre}"></strong>"</span>
+                    </p>
+                </div>
+
+                <div class="movie-list" th:if="${movieCount > 0}">
+                    <div class="movie-item" th:each="movie : ${movies}">
+                        <div class="movie-info">
+                            <h3>
+                                <a th:href="@{/movies/view/{id}(id=${movie.id})}" th:text="${movie.title}"></a>
+                            </h3>
+                            <div class="movie-details">
+                                <span class="movie-year" th:text="${movie.releaseYear}"></span>
+                                <span class="movie-rating" th:if="${movie.rating != null}">
+                                    ★ <span th:text="${movie.rating}"></span>/10
+                                </span>
+                                <span class="movie-duration" th:if="${movie.durationMinutes != null}">
+                                    <span th:text="${movie.durationMinutes}"></span> мин
+                                </span>
+                            </div>
+                            <div class="movie-genres" th:if="${movie.genre != null and !#strings.isEmpty(movie.genre)}">
+                                <span class="genre-tag" th:text="${movie.genre}"></span>
+                            </div>
+                            <p class="movie-description" th:text="${movie.description}"></p>
+                        </div>
+                        <div class="movie-actions">
+                            <a th:href="@{/movies/view/{id}(id=${movie.id})}" class="btn btn-small">Просмотр</a>
+                            <a th:href="@{/movies/edit/{id}(id=${movie.id})}" class="btn btn-small btn-edit">Изменить</a>
+                            <a th:href="@{/movies/delete/{id}(id=${movie.id})}"
+                               class="btn btn-small btn-delete"
+                               onclick="return confirm('Удалить фильм \'' + '${movie.title}' + '\'?')">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="empty-state" th:if="${movieCount == 0}">
+                    <div th:unless="${selectedGenre != null}">
+                        <p>Фильмов не найдено</p>
+                        <a th:href="@{/movies/new}" class="btn btn-primary">Добавить первый фильм</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

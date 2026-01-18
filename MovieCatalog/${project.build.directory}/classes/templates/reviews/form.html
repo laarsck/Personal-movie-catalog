@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${action == 'edit'} ? 'Редактировать рецензию' : 'Написать рецензию'"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <h1 th:text="${action == 'edit'} ? 'Редактировать рецензию' : 'Написать рецензию'"></h1>
+        <p class="subtitle">Оставьте отзыв о фильме</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link">Мои просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link active">Рецензии</a>
+    </nav>
+
+    <!-- Форма рецензии -->
+    <div class="content">
+        <form th:action="${action == 'edit'} ? @{/reviews/update/{id}(id=${review.id})} : @{/reviews}"
+              th:object="${review}"
+              method="post"
+              class="review-form">
+
+            <div class="form-group">
+                <label for="movie">Фильм*</label>
+                <select id="movie" th:field="*{movie}" required>
+                    <option value="">Выберите фильм</option>
+                    <option th:each="movie : ${allMovies}"
+                            th:value="${movie.id}"
+                            th:text="${movie.title + ' (' + movie.releaseYear + ')'}"
+                            th:selected="${review.movie != null and review.movie.id == movie.id}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Оценка (1-10)*</label>
+                <input type="number" id="rating" th:field="*{rating}"
+                       placeholder="Например: 9.5"
+                       step="0.1" min="1" max="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="watchDate">Дата просмотра*</label>
+                <input type="date" id="watchDate" th:field="*{watchDate}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" th:field="*{comment}"
+                          placeholder="Отзыв о фильме..."
+                          rows="4"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <span th:text="${action == 'edit'} ? 'Сохранить изменения' : 'Добавить рецензию'"></span>
+                </button>
+                <a th:href="@{/reviews}" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/reviews}" class="btn btn-secondary">Назад к списку</a>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История просмотров</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- Шапка -->
+<div class="container">
+    <header>
+        <h1>Просмотры</h1>
+        <p class="subtitle">История просмотра фильмов</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link active">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link">Рецензии</a>
+    </nav>
+
+    <!-- Сообщения -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Панель действий -->
+    <div class="action-panel">
+        <a th:href="@{/watch-history/new}" class="btn btn-primary">Добавить просмотр</a>
+    </div>
+
+    <!-- Список просмотров -->
+    <div class="content">
+        <div class="info-bar">
+            <p>Найдено записей: <strong th:text="${watchHistoryCount}">0</strong></p>
+        </div>
+
+        <div class="watch-list" th:if="${watchHistoryCount > 0}">
+            <div class="watch-item" th:each="watch : ${watchHistory}">
+                <div class="watch-info">
+                    <h3>
+                        <a th:href="@{/movies/view/{id}(id=${watch.movie.id})}"
+                           th:text="${watch.movie.title}"></a>
+                    </h3>
+                    <div class="watch-details">
+                        <span class="watch-status" th:text="${watch.status}"></span>
+                        <span class="watch-date">Добавлено: <span th:text="${watch.addedDate}"></span></span>
+                        <span class="watch-completed" th:if="${watch.completedDate != null}">
+                            Завершено: <span th:text="${watch.completedDate}"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="watch-actions">
+                    <a th:href="@{/watch-history/edit/{id}(id=${watch.id})}" class="btn btn-small">Изменить</a>
+                    <a th:href="@{/watch-history/delete/{id}(id=${watch.id})}"
+                       class="btn btn-small btn-delete"
+                       onclick="return confirm('Удалить эту запись?')">Удалить</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" th:if="${watchHistoryCount == 0}">
+            <p>Записей о просмотрах не найдено</p>
+            <a th:href="@{/watch-history/new}" class="btn btn-primary">Добавить первый просмотр</a>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/}" class="btn btn-secondary">На главную</a>
+    </footer>
+</div>
+</body>
+</html>

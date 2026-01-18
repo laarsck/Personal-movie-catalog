@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${action == 'edit'} ? 'Редактировать просмотр' : 'Добавить просмотр'"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- Шапка -->
+<div class="container">
+    <header>
+        <h1 th:text="${action == 'edit'} ? 'Редактировать просмотр' : 'Добавить просмотр'"></h1>
+        <p class="subtitle">Добавьте фильм в историю просмотра</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link active">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link">Рецензии</a>
+    </nav>
+
+    <!-- Сообщения -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Форма о просмотре фильма -->
+    <div class="content">
+        <form th:action="${action == 'edit'} ? @{/watch-history/update/{id}(id=${watchHistory.id})} : @{/watch-history}"
+              th:object="${watchHistory}"
+              method="post"
+              class="watch-form">
+
+            <div class="form-group">
+                <label for="movie">Фильм*</label>
+                <select id="movie" name="movie.id" required>
+                    <option value="">Выберите фильм</option>
+                    <option th:each="movie : ${allMovies}"
+                            th:value="${movie.id}"
+                            th:text="${movie.title + ' (' + movie.releaseYear + ')'}"
+                            th:selected="${watchHistory.movie != null and watchHistory.movie.id == movie.id}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Статус*</label>
+                <select id="status" th:field="*{status}" required>
+                    <option th:each="status : ${statusOptions}"
+                            th:value="${status}"
+                            th:text="${status}"
+                            th:selected="${watchHistory.status == status}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="addedDate">Дата добавления *</label>
+                <input type="date" id="addedDate" th:field="*{addedDate}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="completedDate">Дата завершения</label>
+                <input type="date" id="completedDate" th:field="*{completedDate}">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <span th:text="${action == 'edit'} ? 'Сохранить изменения' : 'Добавить'"></span>
+                </button>
+                <a th:href="@{/watch-history}" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/watch-history}" class="btn btn-secondary">Назад к списку</a>
+    </footer>
+</div>
+</body>
+</html>

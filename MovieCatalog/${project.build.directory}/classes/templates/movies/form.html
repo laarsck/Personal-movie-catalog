@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${action == 'edit'} ? 'Редактировать фильм' : 'Добавить фильм'"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <h1 th:text="${action == 'edit'} ? 'Редактировать фильм' : 'Добавить фильм'"></h1>
+        <p class="subtitle">Заполните информацию о фильме</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link">Рецензии</a>
+    </nav>
+
+    <!-- Сообщения -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Форма фильма -->
+    <div class="content">
+        <form th:action="${action == 'edit'} ? @{/movies/update/{id}(id=${movie.id})} : @{/movies}"
+              th:object="${movie}"
+              method="post"
+              class="movie-form">
+
+            <!-- Название фильма -->
+            <div class="form-group">
+                <label for="title">Название фильма*</label>
+                <input type="text" id="title" th:field="*{title}"
+                       placeholder="Введите название фильма"
+                       th:classappend="${#fields.hasErrors('title')} ? 'error' : ''"
+                       required>
+                <span class="error-message" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+            </div>
+
+            <!-- Год выпуска -->
+            <div class="form-group">
+                <label for="releaseYear">Год выпуска*</label>
+                <input type="number" id="releaseYear" th:field="*{releaseYear}"
+                       placeholder="Например: 2026"
+                       th:classappend="${#fields.hasErrors('releaseYear')} ? 'error' : ''"
+                       min="1888" max="2100" required>
+                <span class="error-message" th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></span>
+            </div>
+
+            <!-- Жанр -->
+            <div class="form-group">
+                <label for="genre">Жанр</label>
+                <input type="text" id="genre" th:field="*{genre}"
+                       placeholder="Например: Комедия, Драма"
+                       th:classappend="${#fields.hasErrors('genre')} ? 'error' : ''">
+                <span class="error-message" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+                <div class="form-hint">
+                    <p>Можно указать несколько жанров через запятую</p>
+                </div>
+            </div>
+
+            <!-- Длительность -->
+            <div class="form-group">
+                <label for="durationMinutes">Длительность (минуты)</label>
+                <input type="number" id="durationMinutes" th:field="*{durationMinutes}"
+                       placeholder="Например: 120"
+                       min="1">
+            </div>
+
+            <!-- Описание -->
+            <div class="form-group">
+                <label for="description">Описание</label>
+                <textarea id="description" th:field="*{description}"
+                          placeholder="Краткое описание фильма"
+                          rows="4"></textarea>
+            </div>
+
+            <!-- Рейтинг -->
+            <div class="form-group">
+                <label for="rating">Рейтинг (1-10)</label>
+                <input type="number" id="rating" th:field="*{rating}"
+                       placeholder="Например: 9.5"
+                       step="0.1" min="1" max="10">
+            </div>
+
+            <!-- Кнопки действий -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <span th:text="${action == 'edit'} ? 'Сохранить изменения' : 'Добавить фильм'"></span>
+                </button>
+                <a th:href="@{/}" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/}" class="btn btn-secondary">Назад к списку фильмов</a>
+    </footer>
+</div>
+</body>
+</html>

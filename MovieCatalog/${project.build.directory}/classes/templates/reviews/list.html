@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рецензии</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <h1>Рецензии</h1>
+        <p class="subtitle">Персональные рецензии о фильмах</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link active">Рецензии</a>
+    </nav>
+
+    <!-- Сообщения -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-error">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- Панель действий -->
+    <div class="action-panel">
+        <a th:href="@{/reviews/new}" class="btn btn-primary">Написать рецензию</a>
+    </div>
+
+    <!-- Список рецензий -->
+    <div class="content">
+        <div class="info-bar">
+            <p>Найдено рецензий: <strong th:text="${reviewCount}">0</strong></p>
+        </div>
+
+        <div class="review-list" th:if="${reviewCount > 0}">
+            <div class="review-item" th:each="review : ${reviews}">
+                <div class="review-header">
+                    <h3>
+                        <a th:href="@{/movies/view/{id}(id=${review.movie.id})}"
+                           th:text="${review.movie.title}"></a>
+                    </h3>
+                    <div class="review-meta">
+                        <span class="review-rating">Моя оценка: <span th:text="${review.rating}"></span>/10</span>
+                        <span class="review-date" th:text="${review.watchDate}"></span>
+                    </div>
+                </div>
+
+                <div class="review-body" th:if="${review.comment != null and !#strings.isEmpty(review.comment)}">
+                    <p th:text="${review.comment}"></p>
+                </div>
+
+                <div class="review-actions">
+                    <a th:href="@{/reviews/edit/{id}(id=${review.id})}" class="btn btn-small">Изменить</a>
+                    <a th:href="@{/reviews/delete/{id}(id=${review.id})}"
+                       class="btn btn-small btn-delete"
+                       onclick="return confirm('Удалить эту рецензию?')">Удалить</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" th:if="${reviewCount == 0}">
+            <p>Рецензий пока нет</p>
+            <a th:href="@{/reviews/new}" class="btn btn-primary">Написать первую рецензию</a>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/}" class="btn btn-secondary">На главную</a>
+    </footer>
+</div>
+</body>
+</html>
