@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.movie.catalog"},{"l":"com.movie.catalog.controller"},{"l":"com.movie.catalog.entity"},{"l":"com.movie.catalog.repository"},{"l":"com.movie.catalog.service"}];updateSearchResults();

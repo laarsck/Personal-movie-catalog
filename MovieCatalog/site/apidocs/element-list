@@ -1,0 +1,5 @@
+com.movie.catalog
+com.movie.catalog.controller
+com.movie.catalog.entity
+com.movie.catalog.repository
+com.movie.catalog.service

@@ -1,0 +1,126 @@
+-Xdoclint:none
+@options
+@packages
+-classpath
+'C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/4.0.1/spring-boot-starter-data-jpa-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter/4.0.1/spring-boot-starter-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-logging/4.0.1/spring-boot-starter-logging-4.0.1.jar;C:/Users/Arseniy/.m2/repository/ch/qos/logback/logback-classic/1.5.22/logback-classic-1.5.22.jar;C:/Users/Arseniy/.m2/repository/ch/qos/logback/logback-core/1.5.22/logback-core-1.5.22.jar;C:/Users/Arseniy/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.25.3/log4j-to-slf4j-2.25.3.jar;C:/Users/Arseniy/.m2/repository/org/apache/logging/log4j/log4j-api/2.25.3/log4j-api-2.25.3.jar;C:/Users/Arseniy/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.0.1/spring-boot-autoconfigure-4.0.1.jar;C:/Users/Arseniy/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar;C:/Users/Arseniy/.m2/repository/org/yaml/snakeyaml/2.5/snakeyaml-2.5.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/4.0.1/spring-boot-starter-jdbc-4.0.1.jar;C:/Users/Arseniy/.m2/repository/com/zaxxer/HikariCP/7.0.2/HikariCP-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-data-jpa/4.0.1/spring-boot-data-jpa-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-data-commons/4.0.1/spring-boot-data-commons-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-persistence/4.0.1/spring-boot-persistence-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/data/spring-data-commons/4.0.1/spring-data-commons-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-hibernate/4.0.1/spring-boot-hibernate-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-jpa/4.0.1/spring-boot-jpa-4.0.1.jar;C:/Users/Arseniy/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar;C:/Users/Arseniy/.m2/repository/org/hibernate/orm/hibernate-core/7.2.0.Final/hibernate-core-7.2.0.Final.jar;C:/Users/Arseniy/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-orm/7.0.2/spring-orm-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/data/spring-data-jpa/4.0.1/spring-data-jpa-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-context/7.0.2/spring-context-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-aop/7.0.2/spring-aop-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-tx/7.0.2/spring-tx-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-beans/7.0.2/spring-beans-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/antlr/antlr4-runtime/4.13.2/antlr4-runtime-4.13.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-aspects/7.0.2/spring-aspects-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-jdbc/4.0.1/spring-boot-jdbc-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot/4.0.1/spring-boot-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-sql/4.0.1/spring-boot-sql-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-transaction/4.0.1/spring-boot-transaction-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-jdbc/7.0.2/spring-jdbc-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/4.0.1/spring-boot-starter-thymeleaf-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-thymeleaf/4.0.1/spring-boot-thymeleaf-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/thymeleaf/thymeleaf-spring6/3.1.3.RELEASE/thymeleaf-spring6-3.1.3.RELEASE.jar;C:/Users/Arseniy/.m2/repository/org/thymeleaf/thymeleaf/3.1.3.RELEASE/thymeleaf-3.1.3.RELEASE.jar;C:/Users/Arseniy/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar;C:/Users/Arseniy/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-web/7.0.2/spring-web-7.0.2.jar;C:/Users/Arseniy/.m2/repository/io/micrometer/micrometer-observation/1.16.1/micrometer-observation-1.16.1.jar;C:/Users/Arseniy/.m2/repository/io/micrometer/micrometer-commons/1.16.1/micrometer-commons-1.16.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-validation/4.0.1/spring-boot-starter-validation-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-validation/4.0.1/spring-boot-validation-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/11.0.15/tomcat-embed-el-11.0.15.jar;C:/Users/Arseniy/.m2/repository/org/hibernate/validator/hibernate-validator/9.0.1.Final/hibernate-validator-9.0.1.Final.jar;C:/Users/Arseniy/.m2/repository/jakarta/validation/jakarta.validation-api/3.1.1/jakarta.validation-api-3.1.1.jar;C:/Users/Arseniy/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar;C:/Users/Arseniy/.m2/repository/com/fasterxml/classmate/1.7.1/classmate-1.7.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc/4.0.1/spring-boot-starter-webmvc-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-jackson/4.0.1/spring-boot-starter-jackson-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-jackson/4.0.1/spring-boot-jackson-4.0.1.jar;C:/Users/Arseniy/.m2/repository/tools/jackson/core/jackson-databind/3.0.3/jackson-databind-3.0.3.jar;C:/Users/Arseniy/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.20/jackson-annotations-2.20.jar;C:/Users/Arseniy/.m2/repository/tools/jackson/core/jackson-core/3.0.3/jackson-core-3.0.3.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/4.0.1/spring-boot-starter-tomcat-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat-runtime/4.0.1/spring-boot-starter-tomcat-runtime-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/11.0.15/tomcat-embed-core-11.0.15.jar;C:/Users/Arseniy/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/11.0.15/tomcat-embed-websocket-11.0.15.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-tomcat/4.0.1/spring-boot-tomcat-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-http-converter/4.0.1/spring-boot-http-converter-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-webmvc/4.0.1/spring-boot-webmvc-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-servlet/4.0.1/spring-boot-servlet-4.0.1.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-webmvc/7.0.2/spring-webmvc-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-expression/7.0.2/spring-expression-7.0.2.jar;C:/Users/Arseniy/.m2/repository/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar;C:/Users/Arseniy/.m2/repository/org/springframework/spring-core/7.0.2/spring-core-7.0.2.jar;C:/Users/Arseniy/.m2/repository/commons-logging/commons-logging/1.3.5/commons-logging-1.3.5.jar;C:/Users/Arseniy/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar;C:/Users/Arseniy/.m2/repository/org/springframework/boot/spring-boot-web-server/4.0.1/spring-boot-web-server-4.0.1.jar'
+-encoding
+'UTF-8'
+-public
+--release
+17
+-sourcepath
+'C:/Users/Arseniy/OpenideProjects/MovieCatalog/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Arseniy/OpenideProjects/MovieCatalog/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'movie-catalog 0.0.1-SNAPSHOT API'
+-link
+'https://docs.oracle.com/javase/8/docs/api'
+-use
+-version
+-windowtitle
+'movie-catalog 0.0.1-SNAPSHOT API'
+com.movie.catalog
+com.movie.catalog.controller
+com.movie.catalog.entity
+com.movie.catalog.repository
+com.movie.catalog.service
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\4.0.1\spring-boot-starter-data-jpa-4.0.1.jar = 1769194133914
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter\4.0.1\spring-boot-starter-4.0.1.jar = 1769194132690
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-logging\4.0.1\spring-boot-starter-logging-4.0.1.jar = 1769194134000
+C:\Users\Arseniy\.m2\repository\ch\qos\logback\logback-classic\1.5.22\logback-classic-1.5.22.jar = 1769194134094
+C:\Users\Arseniy\.m2\repository\ch\qos\logback\logback-core\1.5.22\logback-core-1.5.22.jar = 1769194133616
+C:\Users\Arseniy\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.25.3\log4j-to-slf4j-2.25.3.jar = 1769194133707
+C:\Users\Arseniy\.m2\repository\org\apache\logging\log4j\log4j-api\2.25.3\log4j-api-2.25.3.jar = 1769194133803
+C:\Users\Arseniy\.m2\repository\org\slf4j\jul-to-slf4j\2.0.17\jul-to-slf4j-2.0.17.jar = 1768493587567
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\4.0.1\spring-boot-autoconfigure-4.0.1.jar = 1769194133417
+C:\Users\Arseniy\.m2\repository\jakarta\annotation\jakarta.annotation-api\3.0.0\jakarta.annotation-api-3.0.0.jar = 1768493587977
+C:\Users\Arseniy\.m2\repository\org\yaml\snakeyaml\2.5\snakeyaml-2.5.jar = 1768493588305
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\4.0.1\spring-boot-starter-jdbc-4.0.1.jar = 1769194133498
+C:\Users\Arseniy\.m2\repository\com\zaxxer\HikariCP\7.0.2\HikariCP-7.0.2.jar = 1768493589478
+C:\Users\Arseniy\.m2\repository\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar = 1768493587698
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-data-jpa\4.0.1\spring-boot-data-jpa-4.0.1.jar = 1769194132792
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-data-commons\4.0.1\spring-boot-data-commons-4.0.1.jar = 1769194132876
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-persistence\4.0.1\spring-boot-persistence-4.0.1.jar = 1769194133223
+C:\Users\Arseniy\.m2\repository\org\springframework\data\spring-data-commons\4.0.1\spring-data-commons-4.0.1.jar = 1769194134421
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-hibernate\4.0.1\spring-boot-hibernate-4.0.1.jar = 1769194134180
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-jpa\4.0.1\spring-boot-jpa-4.0.1.jar = 1769194133091
+C:\Users\Arseniy\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.2.0\jakarta.persistence-api-3.2.0.jar = 1768493588549
+C:\Users\Arseniy\.m2\repository\org\hibernate\orm\hibernate-core\7.2.0.Final\hibernate-core-7.2.0.Final.jar = 1769194134564
+C:\Users\Arseniy\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar = 1768131990041
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-orm\7.0.2\spring-orm-7.0.2.jar = 1769194134508
+C:\Users\Arseniy\.m2\repository\org\springframework\data\spring-data-jpa\4.0.1\spring-data-jpa-4.0.1.jar = 1769194134334
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-context\7.0.2\spring-context-7.0.2.jar = 1769194133468
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-aop\7.0.2\spring-aop-7.0.2.jar = 1769194134535
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-tx\7.0.2\spring-tx-7.0.2.jar = 1769194133112
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-beans\7.0.2\spring-beans-7.0.2.jar = 1769194132981
+C:\Users\Arseniy\.m2\repository\org\antlr\antlr4-runtime\4.13.2\antlr4-runtime-4.13.2.jar = 1768493588376
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-aspects\7.0.2\spring-aspects-7.0.2.jar = 1769194133499
+C:\Users\Arseniy\.m2\repository\org\aspectj\aspectjweaver\1.9.25.1\aspectjweaver-1.9.25.1.jar = 1769194133623
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-jdbc\4.0.1\spring-boot-jdbc-4.0.1.jar = 1769194134596
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot\4.0.1\spring-boot-4.0.1.jar = 1769194133132
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-sql\4.0.1\spring-boot-sql-4.0.1.jar = 1769194133582
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-transaction\4.0.1\spring-boot-transaction-4.0.1.jar = 1769194133307
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-jdbc\7.0.2\spring-jdbc-7.0.2.jar = 1769194134219
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\4.0.1\spring-boot-starter-thymeleaf-4.0.1.jar = 1769194133223
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-thymeleaf\4.0.1\spring-boot-thymeleaf-4.0.1.jar = 1769194133331
+C:\Users\Arseniy\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.3.RELEASE\thymeleaf-spring6-3.1.3.RELEASE.jar = 1768493589708
+C:\Users\Arseniy\.m2\repository\org\thymeleaf\thymeleaf\3.1.3.RELEASE\thymeleaf-3.1.3.RELEASE.jar = 1768493590383
+C:\Users\Arseniy\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar = 1768132366036
+C:\Users\Arseniy\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar = 1768132365420
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-web\7.0.2\spring-web-7.0.2.jar = 1769194133162
+C:\Users\Arseniy\.m2\repository\io\micrometer\micrometer-observation\1.16.1\micrometer-observation-1.16.1.jar = 1769194133378
+C:\Users\Arseniy\.m2\repository\io\micrometer\micrometer-commons\1.16.1\micrometer-commons-1.16.1.jar = 1769194132799
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-validation\4.0.1\spring-boot-starter-validation-4.0.1.jar = 1769194132974
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-validation\4.0.1\spring-boot-validation-4.0.1.jar = 1769194132816
+C:\Users\Arseniy\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\11.0.15\tomcat-embed-el-11.0.15.jar = 1769194133224
+C:\Users\Arseniy\.m2\repository\org\hibernate\validator\hibernate-validator\9.0.1.Final\hibernate-validator-9.0.1.Final.jar = 1768493588449
+C:\Users\Arseniy\.m2\repository\jakarta\validation\jakarta.validation-api\3.1.1\jakarta.validation-api-3.1.1.jar = 1768493588542
+C:\Users\Arseniy\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar = 1768493588642
+C:\Users\Arseniy\.m2\repository\com\fasterxml\classmate\1.7.1\classmate-1.7.1.jar = 1768493588726
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-webmvc\4.0.1\spring-boot-starter-webmvc-4.0.1.jar = 1769194133230
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-jackson\4.0.1\spring-boot-starter-jackson-4.0.1.jar = 1769194132889
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-jackson\4.0.1\spring-boot-jackson-4.0.1.jar = 1769194132978
+C:\Users\Arseniy\.m2\repository\tools\jackson\core\jackson-databind\3.0.3\jackson-databind-3.0.3.jar = 1769194134934
+C:\Users\Arseniy\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.20\jackson-annotations-2.20.jar = 1768493589760
+C:\Users\Arseniy\.m2\repository\tools\jackson\core\jackson-core\3.0.3\jackson-core-3.0.3.jar = 1769194135127
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\4.0.1\spring-boot-starter-tomcat-4.0.1.jar = 1769194135213
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat-runtime\4.0.1\spring-boot-starter-tomcat-runtime-4.0.1.jar = 1769194134439
+C:\Users\Arseniy\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\11.0.15\tomcat-embed-core-11.0.15.jar = 1769194134902
+C:\Users\Arseniy\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\11.0.15\tomcat-embed-websocket-11.0.15.jar = 1769194135025
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-tomcat\4.0.1\spring-boot-tomcat-4.0.1.jar = 1769194134601
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-http-converter\4.0.1\spring-boot-http-converter-4.0.1.jar = 1769194133532
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-webmvc\4.0.1\spring-boot-webmvc-4.0.1.jar = 1769194133457
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-servlet\4.0.1\spring-boot-servlet-4.0.1.jar = 1769194133814
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-webmvc\7.0.2\spring-webmvc-7.0.2.jar = 1769194134164
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-expression\7.0.2\spring-expression-7.0.2.jar = 1769194133923
+C:\Users\Arseniy\.m2\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar = 1768493590860
+C:\Users\Arseniy\.m2\repository\org\springframework\spring-core\7.0.2\spring-core-7.0.2.jar = 1769194133155
+C:\Users\Arseniy\.m2\repository\commons-logging\commons-logging\1.3.5\commons-logging-1.3.5.jar = 1768493589083
+C:\Users\Arseniy\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar = 1768493587540
+C:\Users\Arseniy\.m2\repository\org\springframework\boot\spring-boot-web-server\4.0.1\spring-boot-web-server-4.0.1.jar = 1769194133606
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\src\main\java = 1768493996192
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\allclasses-index.html = 1769196465728
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\allpackages-index.html = 1769196465730
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\element-list = 1769196465540
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\help-doc.html = 1769196465764
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\index-all.html = 1769196465757
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\index.html = 1769196465707
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\jquery-ui.overrides.css = 1769196465802
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\member-search-index.js = 1769196465737
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\module-search-index.js = 1769196465732
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\overview-summary.html = 1769196465760
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\overview-tree.html = 1769196465702
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\package-search-index.js = 1769196465734
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\script.js = 1769196465768
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\search.js = 1769196465770
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\stylesheet.css = 1769196465766
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\tag-search-index.js = 1769196465739
+C:\Users\Arseniy\OpenideProjects\MovieCatalog\target\site\apidocs\type-search-index.js = 1769196465735
