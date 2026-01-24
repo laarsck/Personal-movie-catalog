@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Фильм:' + ${movie.title}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <h1 th:text="${movie.title}"></h1>
+        <p class="subtitle">Информация о фильме</p>
+    </header>
+
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link">Главная</a>
+        <a th:href="@{/watch-history}" class="nav-link">Просмотры</a>
+        <a th:href="@{/reviews}" class="nav-link">Рецензии</a>
+    </nav>
+
+    <!-- Фильм -->
+    <div class="content">
+        <div class="movie-detail-card">
+            <div class="movie-header">
+                <h2 th:text="${movie.title}"></h2>
+                <div class="movie-meta">
+                    <span class="movie-year" th:text="${movie.releaseYear}"></span>
+                    <span class="movie-rating" th:if="${movie.rating != null}">
+                        ★ <span th:text="${movie.rating}"></span>/10
+                    </span>
+                    <span class="movie-duration" th:if="${movie.durationMinutes != null}">
+                        <span th:text="${movie.durationMinutes}"></span> мин
+                    </span>
+                </div>
+            </div>
+
+            <div class="movie-body">
+                <div class="movie-section" th:if="${movie.genre != null and !#strings.isEmpty(movie.genre)}">
+                    <h3>Жанры</h3>
+                    <div class="genre-tag" th:text="${movie.genre}"></div>
+                </div>
+
+                <div class="movie-section" th:if="${movie.description != null and !#strings.isEmpty(movie.description)}">
+                    <h3>Описание</h3>
+                    <p th:text="${movie.description}"></p>
+                </div>
+
+                <div class="movie-section">
+                    <h3>Действия</h3>
+                    <div class="action-buttons">
+                        <a th:href="@{/movies/edit/{id}(id=${movie.id})}" class="btn btn-edit">Редактировать</a>
+                        <a th:href="@{/watch-history/new?movieId={id}(id=${movie.id})}" class="btn btn-primary">Добавить в просмотры</a>
+                        <a th:href="@{/reviews/new?movieId={id}(id=${movie.id})}" class="btn btn-secondary">Написать рецензию</a>
+                        <a th:href="@{/movies/delete/{id}(id=${movie.id})}"
+                           class="btn btn-delete"
+                           onclick="return confirm('Удалить фильм \'' + '${movie.title}' + '\'?')">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <a th:href="@{/}" class="btn btn-secondary">Назад к списку</a>
+    </footer>
+</div>
+</body>
+</html>
